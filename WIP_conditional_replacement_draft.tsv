@@ -1,0 +1,3 @@
+Subject	Object	Existing Predicate	New Predicate	github handle of requester	Relevant github ticket	Date requested
+GO:0003674	GO:0003674	RO:0002213	RO:0002629	vanaukenk	https://github.com/geneontology/minerva/issues/	2023-01-25
+GO:0001228	GO:0003674	RO:0002213	RO:0002407	vanaukenk	https://github.com/geneontology/minerva/issues/	2023-01-25
