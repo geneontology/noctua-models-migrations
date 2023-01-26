@@ -1,6 +1,6 @@
 Subject	Subject Label	Object	Object Label	Predicate	Predicate Label	New Predicate	New Predicate Label	Requester	github ticket	Date requested
 GO:0003674	molecular function	GO:0003674	molecular function	RO:0002213	positively regulates	RO:0002629	directly positively regulates	vanaukenk	https://github.com/geneontology/minerva/issues/	2023-01-25
 GO:0001216	DNA-binding transcription activator activity	GO:0003674	molecular function	RO:0002213	positively regulates	RO:000240	indirectly positively regulates	vanaukenk	https://github.com/geneontology/minerva/issues/	2023-01-25
-GO:0001217	DNA-binding transcription repressor activity  GO:0003674	molecular function	RO:0002212	negatively regulates	RO:0002409	indirectly negatively regulates	vanaukenk	https://github.com/geneontology/minerva/issues/	2023-01-25
+GO:0001217	DNA-binding transcription repressor activity	GO:0003674	molecular function	RO:0002212	negatively regulates	RO:0002409	indirectly negatively regulates	vanaukenk	https://github.com/geneontology/minerva/issues/	2023-01-25
 GO:0008494	translation activator activity	GO:0003674	molecular function	RO:0002213	positively regulates	RO:0002407	indirectly positively regulates	vanaukenk	https://github.com/geneontology/minerva/issues/	2023-01-25
 GO:0030371	translation repressor activity	GO:0003674	molecular function	RO:0002212	negatively regulates	RO:0002409	indirectly negatively regulates	vanaukenk	https://github.com/geneontology/minerva/issues/	2023-01-25
