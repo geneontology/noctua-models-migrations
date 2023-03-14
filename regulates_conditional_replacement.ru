@@ -26,7 +26,7 @@ DELETE {
   GRAPH ?model {
     ?s ?p ?o .
     ?model dc:date ?model_date .
-    ?axiom owl:annotatedProperty ?replaced .
+    ?axiom owl:annotatedProperty ?p .
     ?axiom dc:date ?axiom_date .
   }
 }
