@@ -56,8 +56,20 @@ WHERE {
     ?s ?p ?o .
     ?o rdf:type ?mf_obj .
     ?s rdf:type ?mf_sub .
-    BIND( (EXISTS { ?s rdf:type ?DNA_binding_transcription_activator_activity_or_translation_activator_activity }) ||
-     (EXISTS { ?s rdf:type ?DNA_binding_transcription_repressor_activity_or_translation_repressor_activity }) AS ?special_case )
+    FILTER(isIRI(?mf_sub))
+    BIND( ?mf_sub IN (
+      <http://purl.obolibrary.org/obo/GO_0001216> ,
+      <http://purl.obolibrary.org/obo/GO_0001228> ,
+      <http://purl.obolibrary.org/obo/GO_0008494> ,
+      <http://purl.obolibrary.org/obo/GO_0001217> ,
+      <http://purl.obolibrary.org/obo/GO_0106250> ,
+      <http://purl.obolibrary.org/obo/GO_0001227> ,
+      <http://purl.obolibrary.org/obo/GO_0030371> ,
+      <http://purl.obolibrary.org/obo/GO_1903231> ,
+      <http://purl.obolibrary.org/obo/GO_0140764> ,
+      <http://purl.obolibrary.org/obo/GO_0000901> ,
+      <http://purl.obolibrary.org/obo/GO_0000900> 
+    ) AS ?special_case )
     OPTIONAL {
       ?axiom a owl:Axiom ;
       owl:annotatedSource ?s ;
@@ -81,21 +93,6 @@ WHERE {
     BIND( IF(?day_int < 10, CONCAT("0", STR(?day_int)), STR(?day_int)) AS ?day)
     BIND( STRDT(CONCAT(?year, "-", ?month, "-", ?day), xsd:string) AS ?new_date)
     BIND( CONCAT("Automated change ", ?new_date, ": ", ?replaced_curie, " replaced by ", ?replacement_curie) AS ?comment)
-    VALUES ?DNA_binding_transcription_activator_activity_or_translation_activator_activity {
-      <http://purl.obolibrary.org/obo/GO_0001216>
-      <http://purl.obolibrary.org/obo/GO_0001228>
-      <http://purl.obolibrary.org/obo/GO_0008494>
-    }
-    VALUES ?DNA_binding_transcription_repressor_activity_or_translation_repressor_activity {
-      <http://purl.obolibrary.org/obo/GO_0001217>
-      <http://purl.obolibrary.org/obo/GO_0106250>
-      <http://purl.obolibrary.org/obo/GO_0001227>
-      <http://purl.obolibrary.org/obo/GO_0030371>
-      <http://purl.obolibrary.org/obo/GO_1903231>
-      <http://purl.obolibrary.org/obo/GO_0140764>
-      <http://purl.obolibrary.org/obo/GO_0000901>
-      <http://purl.obolibrary.org/obo/GO_0000900>
-    }
     FILTER( ?mf_sub IN (  
       <http://purl.obolibrary.org/obo/GO_0003674>  ,
       <http://purl.obolibrary.org/obo/GO_0038024>  ,
