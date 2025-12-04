@@ -1,3 +1,3 @@
 Subject	Object	Existing relation	Replacement relation	github handle of requester	Relevant github ticket	Date requested
-CHEBI:33695	GO:0110165	BFO:0000050	RO:0001025	vanaukenk	https://github.com/geneontology/minerva/issues/TBD	2025-11-18
-GO:00032991	GO:0110165	BFO:0000050	RO:0001025	vanaukenk	https://github.com/geneontology/minerva/issues/TBD	2025-11-18
+CHEBI:33695	GO:0110165	BFO:0000050	RO:0001025	vanaukenk	https://github.com/geneontology/minerva/issues/580	2025-11-18
+GO:00032991	GO:0110165	BFO:0000050	RO:0001025	vanaukenk	https://github.com/geneontology/minerva/issues/580	2025-11-18
