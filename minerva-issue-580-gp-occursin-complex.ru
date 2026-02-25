@@ -9,21 +9,30 @@ PREFIX occurs_in: <http://purl.obolibrary.org/obo/BFO_0000066>
 PREFIX part_of: <http://purl.obolibrary.org/obo/BFO_0000050>
 PREFIX enabled_by: <http://purl.obolibrary.org/obo/RO_0002333>
 PREFIX GO: <http://purl.obolibrary.org/obo/GO_>
+PREFIX hint: <http://www.bigdata.com/queryHints#>
+
 DELETE {
   GRAPH ?model {
     ?mf occurs_in: ?complex .
+    ?axiom owl:annotatedSource ?mf .
+    ?axiom owl:annotatedProperty occurs_in: .
   }
 }
 INSERT {
   GRAPH ?model {
     ?gp part_of: ?complex .
+    ?axiom owl:annotatedSource ?gp .
+    ?axiom owl:annotatedProperty part_of: .
   }
 }
 WHERE {
+    {
+    SELECT *
+    WHERE {
   GRAPH ?model {
-    ?complex rdf:type ?complex_type .
-    ?mf occurs_in: ?complex .
+    ?mf occurs_in: ?complex .    
     ?mf enabled_by: ?gp .
+    ?complex rdf:type ?complex_type .
     VALUES ?complex_type {
  <http://purl.obolibrary.org/obo/GO_0032991> 
  <http://purl.obolibrary.org/obo/GO_0061703> 
@@ -2103,5 +2112,10 @@ WHERE {
  <http://purl.obolibrary.org/obo/GO_0044776> 
  <http://purl.obolibrary.org/obo/GO_0044612> 
     }
-  }
+  }}
+}
+  ?axiom rdf:type owl:Axiom ;
+        owl:annotatedSource ?mf ;
+        owl:annotatedProperty occurs_in: ;
+        owl:annotatedTarget ?complex .
 }
