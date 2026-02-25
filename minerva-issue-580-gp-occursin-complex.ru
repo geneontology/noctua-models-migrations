@@ -27,10 +27,10 @@ INSERT {
 }
 WHERE {
     {
-    SELECT *
+    SELECT ?axiom ?mf ?complex ?gp ?model
     WHERE {
   GRAPH ?model {
-    ?mf occurs_in: ?complex .    
+    ?mf occurs_in: ?complex .
     ?mf enabled_by: ?gp .
     ?complex rdf:type ?complex_type .
     VALUES ?complex_type {
