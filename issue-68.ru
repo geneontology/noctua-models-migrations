@@ -12,6 +12,13 @@
 #   carriage return are left alone; they are deliberate line breaks in many
 #   comments.
 #
+#   Tabs are also left alone in tab-separated annotation rows imported from
+#   legacy files, where they are column separators, e.g. the dc:source
+#   "MGI<TAB>MGI:1345181<TAB>Pacsin1<TAB><TAB>GO:0043209...". Such a row is
+#   recognized as a literal with 10 or more tabs (GAF has 16, GPAD 11); every
+#   one of these in the models is a GAF row, and no other literal has more
+#   than 2 tabs.
+#
 # - Zero-width format characters (BOM/zero width no-break space, zero width
 #   space and joiners, soft hyphen, bidi marks and isolates, word joiner,
 #   variation selectors, fillers) are deleted. They never displayed as a gap,
@@ -54,11 +61,14 @@ WHERE {
     BIND(
       REPLACE(
         REPLACE(?old,
-          "[\\x{0}-\\x{9}\\x{B}\\x{C}\\x{E}-\\x{1F}\\x{7F}-\\x{A0}\\x{1680}\\x{2000}-\\x{200A}\\x{2028}\\x{2029}\\x{202F}\\x{205F}\\x{3000}]",
+          "[\\x{0}-\\x{8}\\x{B}\\x{C}\\x{E}-\\x{1F}\\x{7F}-\\x{A0}\\x{1680}\\x{2000}-\\x{200A}\\x{2028}\\x{2029}\\x{202F}\\x{205F}\\x{3000}]",
           " "),
         "[\\x{AD}\\x{34F}\\x{61C}\\x{115F}\\x{1160}\\x{17B4}\\x{17B5}\\x{180B}-\\x{180F}\\x{200B}-\\x{200F}\\x{202A}-\\x{202E}\\x{2060}-\\x{206F}\\x{3164}\\x{FE00}-\\x{FE0F}\\x{FEFF}\\x{FFA0}\\x{FFF9}-\\x{FFFB}\\x{E0000}-\\x{E0FFF}]",
         "")
-      AS ?new)
+      AS ?cleaned)
+    # Tabs become spaces too, except in tab-separated annotation rows.
+    # (STR() because Blazegraph's REGEX rejects literals typed xsd:string.)
+    BIND(IF(REGEX(STR(?old), "(\\t[^\\t]*){10}"), ?cleaned, REPLACE(?cleaned, "\\t", " ")) AS ?new)
     FILTER(?new != ?old)
   }
 }
