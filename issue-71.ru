@@ -11,9 +11,11 @@
 # such as the line breaks in a multi-line comment, is left alone.
 #
 # Tabs are left alone in tab-separated annotation rows imported from legacy
-# files, where a trailing tab ends an empty last column, e.g. the dc:source
-# "MGI<TAB>MGI:2151070<TAB>Ophn1<TAB>...<TAB>VEGA:OTTMUSP00000019600<TAB>".
-# As in issue-68.ru, such a row is recognized as a literal with 10 or more tabs.
+# files, where they are column separators. These are GAF rows that end with a
+# tab after the 17th column, e.g. the dc:source
+# "MGI<TAB>MGI:2151070<TAB>Ophn1<TAB>...<TAB>VEGA:OTTMUSP00000019600<TAB>";
+# keeping that tab leaves each row exactly as imported. As in issue-68.ru, such
+# a row is recognized as a literal with 10 or more tabs.
 #
 # There are three updates:
 #
